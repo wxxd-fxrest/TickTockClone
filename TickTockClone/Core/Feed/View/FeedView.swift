@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct FeedView: View {
+    @StateObject var viewModal = FeedViewModal()
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
                 // spacing 항목 사이의 간격
-                ForEach(0 ..< 10) { post in
+                ForEach(viewModal.posts) { post in
                     FeedCell(post: post)
                 }
             }
